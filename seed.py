@@ -31,8 +31,7 @@ def seed():
         location="Kathmandu, Nepal",
         email="er.bombdrbk@gmail.com",
         company="ADBL",
-        interests="AI, Blockchain, Cloud, DevSecOps",
-        profile_image="/profile.jpg"
+        interests="AI, Blockchain, Cloud, DevSecOps"
     )
     print("Seeded AboutData.")
 
@@ -58,7 +57,6 @@ def seed():
             "title": "CloudScale Platform",
             "description": "A high-performance cloud monitoring dashboard with real-time metrics and alerts.",
             "tags": ["React", "Go", "Kubernetes"],
-            "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
             "link": "#",
             "order": 0
         },
@@ -66,7 +64,6 @@ def seed():
             "title": "AI Analysis Tool",
             "description": "Leveraging LLMs to perform automated code reviews and security audits.",
             "tags": ["Python", "FastAPI", "OpenAI"],
-            "image_url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
             "link": "#",
             "order": 1
         },
@@ -74,7 +71,6 @@ def seed():
             "title": "E-Commerce Engine",
             "description": "A headless commerce solution built for scalability and lightning-fast performance.",
             "tags": ["Next.js", "GraphQL", "Stripe"],
-            "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
             "link": "#",
             "order": 2
         }
@@ -92,7 +88,6 @@ def seed():
             "slug": "understanding-microservices-architecture",
             "excerpt": "An introductory guide to building scalable and independently deployable microservice architectures.",
             "content": "Microservices are an architectural style that structures an application as a collection of services that are highly maintainable, testable, loosely coupled, and independently deployable. In this post, we explore their benefits, common design patterns, and deployment strategies using Docker and Kubernetes. We also touch upon patterns like API Gateways, Service Discovery, and database separation.",
-            "image_url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800",
             "read_time": "5 min read"
         },
         {
@@ -100,7 +95,6 @@ def seed():
             "slug": "react-server-components",
             "excerpt": "A detailed look into the rendering paradigms introduced by React Server Components.",
             "content": "React Server Components represent a significant shift in how we build React applications. By allowing components to render on the server, we can reduce the JavaScript bundle size sent to the client, improve initial page load times, and integrate seamlessly with data sources. This post covers the conceptual model, standard implementations, and how React 19 handles static and dynamic server-side execution.",
-            "image_url": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800",
             "read_time": "8 min read"
         }
     ]

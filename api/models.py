@@ -21,7 +21,7 @@ class AboutData(models.Model):
     email = models.EmailField(default="er.bombdrbk@gmail.com")
     company = models.CharField(max_length=100, default="ADBL")
     interests = models.CharField(max_length=255, default="AI, Blockchain, Cloud, DevSecOps")
-    profile_image = models.CharField(max_length=255, default="/profile.jpg")
+    profile_image_file = models.ImageField(upload_to='profile/', blank=True, null=True)
 
     class Meta:
         verbose_name = "About Data"
@@ -51,7 +51,7 @@ class Project(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
     tags = models.JSONField(default=list, help_text="JSON array of tech tags")
-    image_url = models.CharField(max_length=255)
+    image_file = models.ImageField(upload_to='projects/', blank=True, null=True)
     link = models.CharField(max_length=255, default="#")
     order = models.IntegerField(default=0)
 
@@ -66,7 +66,7 @@ class BlogPost(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     excerpt = models.TextField()
     content = models.TextField()
-    image_url = models.CharField(max_length=255)
+    image_file = models.ImageField(upload_to='blogs/', blank=True, null=True)
     published_date = models.DateTimeField(auto_now_add=True)
     read_time = models.CharField(max_length=50, default="5 min read")
 

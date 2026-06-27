@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.core.files.storage import default_storage
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -25,8 +27,7 @@ def get_portfolio_data(request):
             "location": "Kathmandu, Nepal",
             "email": "er.bombdrbk@gmail.com",
             "company": "ADBL",
-            "interests": "AI, Blockchain, Cloud, DevSecOps",
-            "profile_image": "/profile.jpg"
+            "interests": "AI, Blockchain, Cloud, DevSecOps"
         }
     )
 
@@ -47,7 +48,7 @@ def get_portfolio_data(request):
             "title": p.title,
             "desc": p.description,
             "tags": p.tags,
-            "image": p.image_url,
+            "image": p.image_file.url if p.image_file else "",
             "link": p.link
         })
 
@@ -61,7 +62,7 @@ def get_portfolio_data(request):
             "slug": b.slug,
             "excerpt": b.excerpt,
             "content": b.content,
-            "image": b.image_url,
+            "image": b.image_file.url if b.image_file else "",
             "published_date": b.published_date.strftime("%Y-%m-%d"),
             "read_time": b.read_time
         })
@@ -94,7 +95,7 @@ def get_portfolio_data(request):
             "email": about.email,
             "company": about.company,
             "interests": about.interests,
-            "profile_image": about.profile_image
+            "profile_image": about.profile_image_file.url if about.profile_image_file else "/profile.jpg"
         },
         "skills": skills_data,
         "projects": projects_data,
@@ -120,4 +121,17 @@ def contact_submit(request):
             return JsonResponse({"message": "Message received successfully", "id": msg.id}, status=201)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Only POST requests are allowed"}, status=405)
+
+@csrf_exempt
+def upload_image(request):
+    if request.method == 'POST':
+        image_file = request.FILES.get('image')
+        if not image_file:
+            return JsonResponse({"error": "Image file is required"}, status=400)
+
+        saved_path = default_storage.save(f"uploads/{image_file.name}", image_file)
+        file_url = request.build_absolute_uri(settings.MEDIA_URL + saved_path)
+        return JsonResponse({"url": file_url, "path": saved_path}, status=201)
+
     return JsonResponse({"error": "Only POST requests are allowed"}, status=405)
