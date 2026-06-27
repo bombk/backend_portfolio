@@ -133,9 +133,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "https://workshop-latest.onrender.com",
-    "localhost:5173",
-    "bombk.com.np",
+    "http://localhost:5173",
+    "https://localhost:5173",
+    "http://127.0.0.1:5173",
     "https://bombk.com.np",
-    "http://127.0.0.1:5173"
+    "http://bombk.com.np"
 ]
 
