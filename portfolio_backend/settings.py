@@ -131,3 +131,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://workshop-latest.onrender.com",
+    "localhost:5173",
+    "bombk.com.np",
+    "https://bombk.com.np",
+    "http://127.0.0.1:5173"
+]
+
